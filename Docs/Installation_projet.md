@@ -141,3 +141,34 @@ composer require --dev fakerphp/faker
 >On installe tous ces outils en mode --dev car ils servent uniquement pendant le développement (tests, génération de code, données de démo, debug).
 
 ---
+
+## 7. Mise en place du dépôt GitHub
+
+### 7.1. Initialisation Git
+
+```bash
+git init
+git add .
+git commit -m "commit initial - Setup projet SpaceHub Symfony 5.4"
+```
+
+→ J’initialise Git et je crée le premier commit du projet.
+
+### 7.2. Création du dépôt GitHub
+
+→ Je crée un dépôt vide sur GitHub nommé SpaceHub (sans README).
+
+### .3. Lier le dépôt local au dépôt GitHub
+
+```bash
+git branch -M main
+git remote add origin https://github.com/PierreAlainC/SpaceHub.git
+git push -u origin main
+```
+
+→ On envoie le projet Symfony sur GitHub.
+
+### 7.4. Mise à jour du .gitignore
+
+→ Symfony fournit déjà un ```.gitignore```, je vérifie qu’il inclut bien :
+```vendor/```, ```var/```, ```.env.local```, etc.
