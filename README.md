@@ -17,7 +17,7 @@ Le projet repose sur Symfony 5.4.
 ### Cloner le dépôt :
 
 ```bash
-git clone https://github.com/<username>/SpaceHub.git
+git clone https://github.com/PierreAlainC/SpaceHub.git
 cd SpaceHub
 ```
 

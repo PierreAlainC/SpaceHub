@@ -172,3 +172,70 @@ git push -u origin main
 
 → Symfony fournit déjà un ```.gitignore```, je vérifie qu’il inclut bien :
 ```vendor/```, ```var/```, ```.env.local```, etc.
+
+---
+
+## 8. Configuration de l'environnement et de la base de données
+
+### 8.1 Création du fichier `.env.local`
+
+```bash
+touch .env.local
+```
+
+→ Je crée un fichier de configuration local pour définir les variables d'environnement propres à ma machine.
+
+### 8.2 Configuration de la connexion à la base de données
+
+Dans .env.local :
+
+```bash
+DATABASE_URL="mysql://root:root@127.0.0.1:3306/spacehub?serverVersion=8&charset=utf8mb4"
+```
+
+→ Cette ligne indique à Symfony comment se connecter à la base de données MySQL/MariaDB locale.
+
+### 8.3 Création de la base de données avec Doctrine
+
+```bash
+php bin/console doctrine:database:create
+```
+
+→ Doctrine crée automatiquement la base spacehub si elle n'existe pas.
+
+### 8.4 Vérification dans MariaDB
+
+Connexion à MariaDB :
+
+```bash
+mysql -u root -p
+```
+
+Puis :
+
+```bash
+SHOW DATABASES;
+```
+
+→ Vérification que la base spacehub existe bien dans MariaDB.
+
+### 8.5 Vérification avec Adminer
+
+Connexion Adminer avec :
+
+```bash
+Serveur : 127.0.0.1
+Utilisateur : root
+Mot de passe : root
+```
+
+→ La base spacehub apparaît dans Adminer.
+
+---
+
+## Note
+
+Une connexion via localhost peut utiliser une méthode d'authentification différente.
+L'utilisation de 127.0.0.1 permet d'obtenir la même connexion que celle utilisée par Symfony.
+
+---
