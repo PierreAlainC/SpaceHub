@@ -75,3 +75,10 @@ symfony serve
 >Documentation technique en cours
 
 Le README sera complété au fur et à mesure de l’avancée du projet.
+
+> NB:
+> version PHP : PHP 7.4.3 (cli)
+> version SYmfony : Symfony 5.4.51
+> serveur local : 127.0.0.1
+> version MariaDB : 10.3.25
+> 

@@ -220,4 +220,46 @@ git checkout ma-branche
 git rebase main
 ```
 
+Cela rejoue les commits par-dessus main
+
+---
+
+### Obtenir la version de PHP
+
+```bash
+php -v
+```
+
+---
+
+### Obtenir la version de symfony
+
+```bash
+php bin/console --version
+```
+
+---
+
+### Obtenir la version de MariaDB
+
+```bash
+mysql -V
+```
+
+---
+
+### Vider le cache
+
+```bash
+php bin/console cache:clear
+```
+
+---
+
+### Validation BDD
+
+```bash
+php bin/console doctrine:schema:validate
+```
+
 ---
