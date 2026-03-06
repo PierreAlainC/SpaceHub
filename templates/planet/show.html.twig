@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voici: {{ planet.name }}{% endblock %}
+
+{% block body %}
+    <h1>En savoir plus sur {{ planet.name }}</h1>
+
+    <ul>
+        <li><strong>English name:</strong> {{ planet.englishName ?? 'N/A' }}</li>
+        <li><strong>Mass:</strong> {{ planet.mass ?? 'N/A' }}</li>
+        <li><strong>Diameter:</strong> {{ planet.diameter ?? 'N/A' }}</li>
+        <li><strong>Gravity:</strong> {{ planet.gravity ?? 'N/A' }}</li>
+        <li><strong>Density:</strong> {{ planet.density ?? 'N/A' }}</li>
+        <li><strong>Mean temperature:</strong> {{ planet.meanTemperature ?? 'N/A' }}</li>
+        <li><strong>Semimajor axis:</strong> {{ planet.semimajorAxis ?? 'N/A' }}</li>
+        <li><strong>Orbital period:</strong> {{ planet.orbitalPeriod ?? 'N/A' }}</li>
+        <li><strong>Orbital speed:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li>
+        <li><strong>Moons count:</strong> {{ planet.moonsCount ?? 'N/A' }}</li>
+        <li><strong>Discovered by:</strong> {{ planet.discoveredBy ?? 'N/A' }}</li>
+        <li><strong>Discovery date:</strong> {{ planet.discoveryDate ?? 'N/A' }}</li>
+    </ul>
+
+    <a href="{{ path('planets_list') }}">Retour à la liste des Planètes</a>
+{% endblock %}
