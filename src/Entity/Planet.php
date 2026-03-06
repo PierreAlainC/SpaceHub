@@ -18,12 +18,12 @@ class Planet
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=120)
+     * @ORM\Column(type="string", length=120, unique=true)
      */
     private $slug;
 
@@ -91,6 +91,16 @@ class Planet
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $discoveredDate;
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -273,6 +283,30 @@ class Planet
     public function setDiscoveredDate(?string $discoveredDate): self
     {
         $this->discoveredDate = $discoveredDate;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
