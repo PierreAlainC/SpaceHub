@@ -6,18 +6,18 @@
     <h1>En savoir plus sur {{ planet.name }}</h1>
 
     <ul>
-        <li><strong>English name:</strong> {{ planet.englishName ?? 'N/A' }}</li>
-        <li><strong>Mass:</strong> {{ planet.mass ?? 'N/A' }}</li>
-        <li><strong>Diameter:</strong> {{ planet.diameter ?? 'N/A' }}</li>
-        <li><strong>Gravity:</strong> {{ planet.gravity ?? 'N/A' }}</li>
-        <li><strong>Density:</strong> {{ planet.density ?? 'N/A' }}</li>
-        <li><strong>Mean temperature:</strong> {{ planet.meanTemperature ?? 'N/A' }}</li>
-        <li><strong>Semimajor axis:</strong> {{ planet.semimajorAxis ?? 'N/A' }}</li>
-        <li><strong>Orbital period:</strong> {{ planet.orbitalPeriod ?? 'N/A' }}</li>
-        <li><strong>Orbital speed:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li>
-        <li><strong>Moons count:</strong> {{ planet.moonsCount ?? 'N/A' }}</li>
-        <li><strong>Discovered by:</strong> {{ planet.discoveredBy ?? 'N/A' }}</li>
-        <li><strong>Discovery date:</strong> {{ planet.discoveryDate ?? 'N/A' }}</li>
+        <li><strong>Nom anglais:</strong> {{ planet.englishName ?? 'N/A' }}</li>
+        <li><strong>Masse:</strong> {{ planet.mass ?? 'N/A' }}</li>
+        <li><strong>Diamètre:</strong> {{ planet.diameter ?? 'N/A' }}</li>
+        <li><strong>Gravité:</strong> {{ planet.gravity ?? 'N/A' }}</li>
+        <li><strong>Densité:</strong> {{ planet.density ?? 'N/A' }}</li>
+        <li><strong>Température moyenne:</strong> {{ planet.meanTemperature ?? 'N/A' }}</li>
+        <li><strong>Demi-grand axe:</strong> {{ planet.semimajorAxis ?? 'N/A' }}</li>
+        <li><strong>Période de révolution:</strong> {{ planet.orbitalPeriod ?? 'N/A' }}</li>
+        <li><strong>Vitesse orbitale:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li>
+        <li><strong>Nombre de Lune(s):</strong> {{ planet.moonsCount ?? 'N/A' }}</li>
+        <li><strong>Découverte par:</strong> {{ planet.discoveredBy ?? 'N/A' }}</li>
+        <li><strong>Date de découverte:</strong> {{ planet.discoveryDate ?? 'N/A' }}</li>
     </ul>
 
     <a href="{{ path('planets_list') }}">Retour à la liste des Planètes</a>
