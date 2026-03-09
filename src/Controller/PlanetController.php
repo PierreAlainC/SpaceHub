@@ -48,4 +48,14 @@ class PlanetController extends AbstractController
 
         dd($data);
     }
+
+    /**
+     * @Route("/test-planets-sync", name="test_planets_sync")
+     */
+    public function testSync(PlanetService $planetService): Response
+    {
+        $planetService->updatePlanetsFromApi();
+
+        return new Response('Planet sync completed');
+    }
 }

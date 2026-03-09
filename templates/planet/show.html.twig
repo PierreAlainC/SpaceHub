@@ -7,13 +7,13 @@
 
     <ul>
         <li><strong>Nom anglais:</strong> {{ planet.englishName ?? 'N/A' }}</li>
-        <li><strong>Masse:</strong> {{ planet.mass ?? 'N/A' }}</li>
-        <li><strong>Diamètre:</strong> {{ planet.diameter ?? 'N/A' }}</li>
-        <li><strong>Gravité:</strong> {{ planet.gravity ?? 'N/A' }}</li>
-        <li><strong>Densité:</strong> {{ planet.density ?? 'N/A' }}</li>
-        <li><strong>Température moyenne:</strong> {{ planet.meanTemperature ?? 'N/A' }}</li>
-        <li><strong>Demi-grand axe:</strong> {{ planet.semimajorAxis ?? 'N/A' }}</li>
-        <li><strong>Période de révolution:</strong> {{ planet.orbitalPeriod ?? 'N/A' }}</li>
+        <li><strong>Masse:</strong> {{ planet.mass ?? 'N/A' }} Kg</li>
+        <li><strong>Diamètre:</strong> {{ planet.diameter ?? 'N/A' }} Km</li>
+        <li><strong>Gravité:</strong> {{ planet.gravity ?? 'N/A' }} m.s-²</li>
+        <li><strong>Densité:</strong> {{ planet.density ?? 'N/A' }} g.cm3</li>
+        <li><strong>Température moyenne:</strong> {{ planet.meanTemperatureCelsius ?? 'N/A' }} °C</li>
+        <li><strong>Demi-grand axe:</strong> {{ planet.semimajorAxis ?? 'N/A' }} Km</li>
+        <li><strong>Période de révolution:</strong> {{ planet.orbitalPeriod ?? 'N/A' }} jours</li>
         <li><strong>Vitesse orbitale:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li>
         <li><strong>Nombre de Lune(s):</strong> {{ planet.moonsCount ?? 'N/A' }}</li>
         <li><strong>Découverte par:</strong> {{ planet.discoveredBy ?? 'N/A' }}</li>

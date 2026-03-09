@@ -220,6 +220,15 @@ class Planet
         return $this;
     }
 
+    public function getMeanTemperatureCelsius(): ?float
+    {
+        if ($this->meanTemperature === null) {
+            return null;
+        }
+
+        return $this->meanTemperature - 273.15;
+    }
+
     public function getSemimajorAxis(): ?float
     {
         return $this->semimajorAxis;
