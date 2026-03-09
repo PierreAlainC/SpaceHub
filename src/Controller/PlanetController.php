@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\PlanetRepository;
+use App\Service\PlanetService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,5 +36,16 @@ class PlanetController extends AbstractController
         return $this->render('planet/show.html.twig', [
             'planet' => $planet,
         ]);
+    }
+
+    /**
+     * @Route("test-planets-api", name="test_planets_api")
+     * Ceci n'est qu'un fonction test permettant d'afficher dans un tableau simplement les données récupérées par notre service PlanetService.php
+     */
+    public function testApi(PlanetService $planetService): Response
+    {
+        $data = $planetService->fetchPlanets();
+
+        dd($data);
     }
 }
