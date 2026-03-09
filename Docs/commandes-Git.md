@@ -263,3 +263,11 @@ php bin/console doctrine:schema:validate
 ```
 
 ---
+
+### Verification si Symfony connait Service
+
+```bash
+php bin/console debug:container App\Service\PlanetService
+```
+
+---
