@@ -11,14 +11,16 @@ class PlanetService
 {
     private HttpClientInterface $client;
     private string $apiKey;
+    private string $apiUrl;
     private PlanetRepository $planetRepository;
     private EntityManagerInterface $entityManager;
 
     public function __construct(
-        HttpClientInterface $client, string $solarSystemApiKey, PlanetRepository $planetRepository, EntityManagerInterface $entityManager) 
+        HttpClientInterface $client, string $solarSystemApiKey, string $solarSystemApiUrl, PlanetRepository $planetRepository, EntityManagerInterface $entityManager) 
     {
         $this->client = $client;
         $this->apiKey = $solarSystemApiKey;
+        $this->apiUrl = $solarSystemApiUrl;
         $this->planetRepository = $planetRepository;
         $this->entityManager = $entityManager;
     }
@@ -27,7 +29,7 @@ class PlanetService
     {
         $response = $this->client->request(
             'GET',
-            'https://api.le-systeme-solaire.net/rest/bodies',
+            $this->apiUrl . '/bodies',
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $this->apiKey,
