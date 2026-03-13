@@ -83,4 +83,108 @@ class SolarSystemApiService
             return isset($body['bodyType']) && $body['bodyType'] === 'Moon';
         });
     }
+
+    public function fetchAsteroids(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->apiUrl . '/bodies',
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->apiKey,
+                ],
+            ]
+        );
+
+        $data = $response->toArray();
+
+        return array_filter($data['bodies'], function ($body) {
+            return isset($body['bodyType']) && $body['bodyType'] === 'Asteroid';
+        });
+    }
+
+    public function fetchDwarfPlanets(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->apiUrl . '/bodies',
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->apiKey,
+                ],
+            ]
+        );
+
+        $data = $response->toArray();
+
+        return array_filter($data['bodies'], function ($body) {
+            return isset($body['bodyType']) && $body['bodyType'] === 'Dwarf Planet';
+        });
+    }
+
+    public function fetchComets(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->apiUrl . '/bodies',
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->apiKey,
+                ],
+            ]
+        );
+
+        $data = $response->toArray();
+
+        return array_filter($data['bodies'], function ($body) {
+            return isset($body['bodyType']) && $body['bodyType'] === 'Comet';
+        });
+    }
+
+    public function fetchStars(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->apiUrl . '/bodies',
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->apiKey,
+                ],
+            ]
+        );
+
+        $data = $response->toArray();
+
+        return array_filter($data['bodies'], function ($body) {
+            return isset($body['bodyType']) && $body['bodyType'] === 'Star';
+        });
+    }
+
+    public function displayBodyTypes(): array
+    {
+        $data = $this->displayAllBodies();
+    
+        $types = [];
+    
+        foreach ($data as $body) {
+            if (isset($body['bodyType'])) {
+                $types[] = $body['bodyType'];
+            }
+        }
+    
+        return array_unique($types);
+    }
+
+    public function displayBodyFields(): array
+    {
+        $bodies = $this->displayAllBodies();
+
+        $fields = [];
+
+        foreach ($bodies as $body) {
+            $fields = array_merge($fields, array_keys($body));
+        }
+
+        return array_unique($fields);
+    }
 }
