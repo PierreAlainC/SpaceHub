@@ -14,7 +14,8 @@
         <li><strong>Température moyenne:</strong> {{ planet.meanTemperatureCelsius ?? 'N/A' }} °C</li>
         <li><strong>Demi-grand axe:</strong> {{ planet.semimajorAxis ?? 'N/A' }} Km</li>
         <li><strong>Période de révolution:</strong> {{ planet.orbitalPeriod ?? 'N/A' }} jours</li>
-        <li><strong>Vitesse orbitale:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li>
+        {# Pas de données accessibles pour le moment pour la vitesse orbitale #}
+        {# <li><strong>Vitesse orbitale:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li> #}
         <li><strong>Nombre de Lune(s):</strong> {{ planet.moonsCount ?? 'N/A' }}</li>
         <li><strong>Découverte par:</strong> {{ planet.discoveredBy ?? 'N/A' }}</li>
         <li><strong>Date de découverte:</strong> {{ planet.discoveryDate ?? 'N/A' }}</li>

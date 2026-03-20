@@ -40,7 +40,7 @@ class PlanetController extends AbstractController
 
     /**
      * @Route("test-planets-api", name="test_planets_api")
-     * Ceci n'est qu'un fonction test permettant d'afficher dans un tableau simplement les données récupérées par notre service PlanetService.php
+     * Ceci n'est qu'un fonction test permettant d'afficher dans un tableau simplement les données des planètes récupérées par notre service PlanetService.php 
      */
     public function testApi(PlanetService $planetService): Response
     {
@@ -50,12 +50,25 @@ class PlanetController extends AbstractController
     }
 
     /**
+     * Synchronisation de la base de données via la route
      * @Route("/test-planets-sync", name="test_planets_sync")
      */
     public function testSync(PlanetService $planetService): Response
     {
-        $planetService->updatePlanetsFromApi();
+        $result = $planetService->updatePlanetsFromApi();
 
-        return new Response('Planet sync completed');
+        //3 réponses possibles
+        /*
+        dd($result);
+        return $this->json($result);
+        return new Response(
+            '<pre>' . print_r($result, true) . '<pre>'
+        ); 
+        */
+
+        //réponse propre sans json!
+        return new Response(
+            '<pre>' . print_r($result, true) . '</pre>'
+        );
     }
 }
