@@ -15,7 +15,7 @@ class PlanetController extends AbstractController
      */
     public function index(PlanetRepository $planetRepository): Response
     {
-        $planets = $planetRepository->findAll();
+        $planets = $planetRepository->findBy([], ['orbitalPeriod' => 'ASC']);
 
         return $this->render('planet/index.html.twig', [
             'planets' => $planets,
