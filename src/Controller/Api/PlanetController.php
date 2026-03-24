@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Controller\Api;
+
+use App\Entity\Planet;
+use App\Repository\PlanetRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * Route par défaut de notre API
+ * 
+ * @Route("/api/v1/planets", name="api_planets_")
+ */
+class PlanetController extends AbstractController
+{
+    private PlanetRepository $planetRepository;
+
+    public function __construct(PlanetRepository $planetRepository)
+    {
+        $this->planetRepository = $planetRepository;
+    }
+
+    /**
+     * Cette fonction va nous retourner toute les planètes dans un tableau formater bien ordoné grace à formatPlanet()
+     * 
+     * @Route("", name="list_planets", methods={"GET"})
+     */
+    public function index(): JsonResponse
+    {
+        $planets = $this->planetRepository->findBy([], ['orbitalPeriod' => 'ASC']);
+
+        $data = [];
+
+        foreach($planets as $planet){
+            $data[] = $this->formatPlanet($planet);
+        }
+
+        return $this->json($data);
+    }
+
+    /**
+     * Cette méthode nos retourne une planète spécifique via son slug pour autant qu'elle existe
+     * 
+     * @Route("/{slug}", name="show_planet", methods="GET")
+     */
+    public function show(string $slug): JsonResponse
+    {
+        $planet = $this->planetRepository->findOneBy(['slug' => $slug]);
+
+        if (!$planet){
+            return $this->json(['error', 'Cette Planète n\'a pas encore été découverte!'], 404);
+        }
+
+        return $this->json($this->formatPlanet($planet));
+    }
+
+    /**
+     * Formate une planète pour notre API
+     * La fameuse méthode pour nous ordonner tout ça bien dans un joli tableau
+     * 
+     */
+    public function formatPlanet(Planet $planet): array
+    {
+        return [
+            'infos' => [
+                'id' => $planet->getId(),
+                'name' => $planet->getName(),
+                'slug' => $planet->getSlug(),
+                'englishName' => $planet->getEnglishName(),
+            ],
+            'physicalData' => [
+                'mass' => $planet->getMass(),
+                'diameter' => $planet->getDiameter(),
+                'gravity' => $planet->getGravity(),
+                'density' => $planet->getDensity(),
+                'meanTemperature' => $planet->getMeanTemperature(),
+            ],
+            'orbitalData' => [
+                'semimajorAxis' => $planet->getSemimajorAxis(),
+                'orbitalPeriod' => $planet->getOrbitalPeriod(),
+            ],
+            'additionalData' => [
+                'moonsCount' => $planet->getMoonsCount(),
+                'discoveredBy' => $planet->getDiscoveredBy(),
+                'discoverdeDate' => $planet->getDiscoveredDate(),
+            ],
+            'entryLog' => [
+                'createdAt' => $planet->getCreatedAt(),
+                'updatedAt' => $planet->getUpdatedAt(),
+            ],
+        ];
+    }
+
+}
