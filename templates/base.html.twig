@@ -12,6 +12,16 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+
+        <!-- Our custom CSS for all planets 'templates/planet/index.html.twig' -->
+        <link rel="stylesheet" href="{{ asset('assets/CSS/planets.css') }}">
+
+        <!-- Our custom CSS for a planet 'templates/planet/index.html.twig' -->
+        <link rel="stylesheet" href="{{ asset('assets/CSS/planet.css') }}">
+
     </head>
     <body>
         {% block body %}{% endblock %}

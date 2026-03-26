@@ -21,24 +21,49 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Les planètes de notre Système Solaire | SpaceHub{% endblock %}
+{% block title %}SpaceHub | Planètes{% endblock %}
 
 {% block body %}
+    <section class="planets-page">
+        <div class="container">
+            <h1 class="page-title">Les planètes du système solaire</h1>
+            <p class="page-intro">
+                Découvrez les principales données physiques et orbitales des planètes de notre cher Système Solaire, synchronisées depuis une API externe (cf: <a href="https://api.le-systeme-solaire.net/en/" target="_blank">Se diriger vers le site "The Solar System OpenData"</a>) puis stockées localement dans SpaceHub.
+            </p>
 
-<div>
-    <h1>Voici les planètes du Système Solaire</h1>
+            <div class="planets-grid">
+                {% for planet in planets %}
+                    <article class="planet-card">
+                        <div class="planet-card-image">
+                            <img
+                                src="{{ asset('assets/images/planets/' ~ planet.slug ~ '.jpg') }}"
+                                alt="Illustration de {{ planet.name }}"
+                            >
+                        </div>
 
-    <ul>
-        {% for planet in planets %}
-            <li>
-                <a href="{{ path('planet_show', { slug: planet.slug }) }}">
-                    {{ planet.name }}
-                </a>
-            </li>
-        {% else %}
-            <li>Aucune planète trouvée</li>
-        {% endfor %}
-    </ul>
-</div>
+                        <div class="planet-card-content">
+                            <h2>{{ planet.name }}</h2>
 
+                            {% if planet.englishName %}
+                                <p class="planet-subtitle">{{ planet.englishName }}</p>
+                            {% endif %}
+
+                            <ul class="planet-card-data">
+                                <li><strong>Diamètre :</strong> {{ planet.diameter ?? 'N/A' }} km</li>
+                                <li><strong>Gravité :</strong> {{ planet.gravity ?? 'N/A' }} m/s²</li>
+                                <li><strong>Température moyenne:</strong> {{ planet.meanTemperatureCelsius ?? 'N/A' }} °C</li>
+                                <li><strong>Lunes :</strong> {{ planet.moonsCount ?? 0 }}</li>
+                            </ul>
+
+                            <a href="{{ path('planet_show', { slug: planet.slug }) }}" class="planet-card-button">
+                                En savoir plus sur cette planète.
+                            </a>
+                        </div>
+                    </article>
+                {% else %}
+                    <p>Aucune planète n'a été détéctée pour le moment. Tous nos téléscopes scrutent le ciel pour en découvrir davantage!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -1,4 +1,79 @@
+{# Nouvel affichage #}
 {% extends 'base.html.twig' %}
+
+{% block title %}SpaceHub | {{ planet.name }}{% endblock %}
+
+{% block body %}
+    <section class="planet-detail-page">
+        <div class="container">
+            <a href="{{ path('planets_list') }}" class="back-link">← Retour à la liste</a>
+
+            <article class="planet-detail-card">
+                <div class="planet-detail-header">
+                    <div class="planet-detail-image">
+                        <img
+                            src="{{ asset('assets/images/planets/' ~ planet.slug ~ '.jpg') }}"
+                            alt="Illustration de {{ planet.name }}"
+                        >
+                    </div>
+
+                    <div class="planet-detail-intro">
+                        <h1>{{ planet.name }}</h1>
+
+                        {% if planet.englishName %}
+                            <p class="planet-detail-subtitle">{{ planet.englishName }}</p>
+                        {% endif %}
+
+                        <p class="planet-detail-description">
+                            Découvrez les principales données physiques, orbitales et autres infos complémentaires de {{ planet.name }}, synchronisées depuis une API externe puis stockées localement dans SpaceHub.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="planet-detail-grid">
+                    <section class="info-block">
+                        <h2>Données physiques</h2>
+                        <ul>
+                            <li><strong>Masse :</strong> {{ planet.mass ?? 'N/A' }}</li>
+                            <li><strong>Diamètre :</strong> {{ planet.diameter ?? 'N/A' }} km</li>
+                            <li><strong>Gravité :</strong> {{ planet.gravity ?? 'N/A' }} m/s²</li>
+                            <li><strong>Densité :</strong> {{ planet.density ?? 'N/A' }} g.cm3</li>
+                            <li><strong>Température moyenne :</strong> {{ planet.meanTemperatureCelsius ?? 'N/A' }} °C</li>
+                        </ul>
+                    </section>
+
+                    <section class="info-block">
+                        <h2>Données orbitales</h2>
+                        <ul>
+                            <li><strong>Demi-grand axe :</strong> {{ planet.semimajorAxis ?? 'N/A' }} km</li>
+                            <li><strong>Période orbitale :</strong> {{ planet.orbitalPeriod ?? 'N/A' }} jours</li>
+                        </ul>
+                    </section>
+
+                    <section class="info-block">
+                        <h2>Informations complémentaires</h2>
+                        <ul>
+                            <li><strong>Nombre de lunes :</strong> {{ planet.moonsCount ?? 0 }}</li>
+                            <li><strong>Découverte par :</strong> {{ planet.discoveredBy ?? 'Non spécifié' }}</li>
+                            <li><strong>Date de découverte :</strong> {{ planet.discoveredDate ?? 'Non spécifiée' }}</li>
+                        </ul>
+                    </section>
+
+                    <section class="info-block">
+                        <h2>Suivi des données</h2>
+                        <ul>
+                            <li><strong>Créée le :</strong> {{ planet.createdAt ? planet.createdAt|date('d/m/Y H:i') : 'N/A' }}</li>
+                            <li><strong>Mise à jour le :</strong> {{ planet.updatedAt ? planet.updatedAt|date('d/m/Y H:i') : 'N/A' }}</li>
+                        </ul>
+                    </section>
+                </div>
+            </article>
+        </div>
+    </section>
+{% endblock %}
+
+{# Ancien affichage #}
+{# {% extends 'base.html.twig' %}
 
 {% block title %}Découvrir {{ planet.name }}{% endblock %}
 
@@ -14,8 +89,10 @@
         <li><strong>Température moyenne:</strong> {{ planet.meanTemperatureCelsius ?? 'N/A' }} °C</li>
         <li><strong>Demi-grand axe:</strong> {{ planet.semimajorAxis ?? 'N/A' }} Km</li>
         <li><strong>Période de révolution:</strong> {{ planet.orbitalPeriod ?? 'N/A' }} jours</li>
+#}
         {# Pas de données accessibles pour le moment pour la vitesse orbitale #}
         {# <li><strong>Vitesse orbitale:</strong> {{ planet.orbitalSpeed ?? 'N/A' }}</li> #}
+{#}
         <li><strong>Nombre de Lune(s):</strong> {{ planet.moonsCount ?? 'N/A' }}</li>
         <li><strong>Découverte par:</strong> {{ planet.discoveredBy ?? 'N/A' }}</li>
         <li><strong>Date de découverte:</strong> {{ planet.discoveryDate ?? 'N/A' }}</li>
@@ -23,3 +100,4 @@
 
     <a href="{{ path('planets_list') }}">Retour à la liste des Planètes</a>
 {% endblock %}
+ #}
