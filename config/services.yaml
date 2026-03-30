@@ -8,6 +8,9 @@ parameters:
     solar_system_api_key: '%env(SOLAR_SYSTEM_API_KEY)%'
     solar_system_api_url: '%env(SOLAR_SYSTEM_API_URL)%'
 
+    nasa_api_key: '%env(NASA_API_KEY)%'
+    nasa_api_url: '%env(NASA_API_URL)%'
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -34,6 +37,12 @@ services:
             # variables qui vont stocker notre clé via le paramètre
             $solarSystemApiKey: '%solar_system_api_key%'
             $solarSystemApiUrl: '%solar_system_api_url%'
+
+    App\Service\ApodService:
+        arguments:
+            # variables qui vont stocker notre clé via le paramètre
+            $nasaApiKey: '%nasa_api_key%'
+            $nasaApiUrl: '%nasa_api_url%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
