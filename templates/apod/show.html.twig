@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SpaceHub| Photo du jour{% endblock %}
+
+{% block body %}
+<section class="apod-page">
+    <div class="container">
+
+        <header class="apod-header">
+            <p class="apod-label">NASA - Astronomy Picture of the Day</p>
+            <h1>{{ apod.title }}</h1>
+
+            {% if apod.date %}
+                <p class="apod-date">{{ apod.date|date('d/m/Y') }}</p>
+            {% endif %}
+        </header>
+
+        <article class="apod-card">
+
+            {# IMAGE #}
+            {% if apod.media_type == 'image' %}
+                <div class="apod-media">
+                    <img
+                        src="{{ apod.url }}"
+                        alt="{{ apod.title }}"
+                        loading="lazy"
+                    >
+                </div>
+
+            {# VIDEO #}
+            {% elseif apod.media_type == 'video' %}
+                <div class="apod-media">
+
+                    {% if apod.thumbnail_url %}
+                        <img
+                            src="{{ apod.thumbnail_url }}"
+                            alt="{{ apod.title }}"
+                            loading="lazy"
+                        >
+                    {% endif %}
+
+                    <a href="{{ apod.url }}" target="_blank" class="apod-video-button">
+                        ▶ Voir la vidéo
+                    </a>
+                </div>
+            {% endif %}
+
+            <div class="apod-content">
+
+                {% if apod.copyright %}
+                    <p class="apod-credit">
+                        Crédit : {{ apod.copyright }}
+                    </p>
+                {% endif %}
+
+                <p class="apod-description">
+                    {{ apod.explanation }}
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+{% endblock %}
