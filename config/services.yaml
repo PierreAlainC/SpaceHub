@@ -11,6 +11,8 @@ parameters:
     nasa_api_key: '%env(NASA_API_KEY)%'
     nasa_api_url: '%env(NASA_API_URL)%'
 
+    iss_api_url: '%env(ISS_API_URl)%'
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -43,6 +45,11 @@ services:
             # variables qui vont stocker notre clé via le paramètre
             $nasaApiKey: '%nasa_api_key%'
             $nasaApiUrl: '%nasa_api_url%'
+
+    App\Service\IssService:
+        arguments:
+            # variables qui vont stocker notre clé via le paramètre
+            $issApiUrl: '%iss_api_url%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
