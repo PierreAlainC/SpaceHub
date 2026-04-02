@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SpaceHub | Iss Tracking{% endblock %}
+
+{% block body %}
+    <section class="iss-page">
+        <div class="container">
+
+            <header class="iss-header">
+                <p class="iss-label">ISS Tracking</p>
+                <h1>Position actuelle de l’ISS et les astronautes en orbite</h1>
+                <div class="iss-picture">
+                    <img
+                        src="{{ asset('assets/images/iss/ISS.jpg') }}"
+                        alt="Illustration de l'{{ iss.name ?? 'N/A' }}"
+                    >
+                </div>
+                <p class="iss-intro">
+                    Données récupérées en temps réel depuis une API externe pour suivre
+                    la position actuelle de la Station spatiale internationale ainsi que les 
+                    astronautes étant en orbite.
+                </p>
+            </header>
+
+            <div class="iss-layout">
+                <article class="iss-card">
+                    <div class="iss-card-grid">
+
+                        <section class="info-block">
+                            <h2>Informations générales</h2>
+                            <ul>
+                                <li><strong>Nom :</strong> {{ iss.name ?? 'N/A' }}</li>
+                                <li><strong>ID :</strong> {{ iss.id ?? 'N/A' }}</li>
+                                <li><strong>Visibilité :</strong> {{ iss.visibility ?? 'N/A' }}</li>
+                            </ul>
+                        </section>
+
+                        <section class="info-block">
+                            <h2>Position actuelle</h2>
+                            <ul>
+                                <li><strong>Latitude :</strong> {{ iss.latitude is not null ? iss.latitude|number_format(4, '.', ' ') : 'N/A' }}</li>
+                                <li><strong>Longitude :</strong> {{ iss.longitude is not null ? iss.longitude|number_format(4, '.', ' ') : 'N/A' }}</li>
+                                <li><strong>Altitude :</strong> {{ iss.altitude is not null ? iss.altitude|number_format(2, '.', ' ') : 'N/A' }} km</li>
+                            </ul>
+                        </section>
+
+                        <section class="info-block">
+                            <h2>Données orbitales</h2>
+                            <ul>
+                                <li><strong>Vitesse :</strong> {{ iss.velocity is not null ? iss.velocity|number_format(2, '.', ' ') : 'N/A' }} km/h</li>
+                                <li><strong>Footprint :</strong> {{ iss.footprint is not null ? iss.footprint|number_format(2, '.', ' ') : 'N/A' }} km</li>
+                                <li><strong>Day Number :</strong> {{ iss.daynum ?? 'N/A' }}</li>
+                            </ul>
+                        </section>
+
+                        <section class="info-block">
+                            <h2>Données solaires</h2>
+                            <ul>
+                                <li><strong>Latitude Solaire :</strong> {{ iss.solar_lat is not null ? iss.solar_lat|number_format(4, '.', ' ') : 'N/A' }}</li>
+                                <li><strong>Longitude Solaire  :</strong> {{ iss.solar_lon is not null ? iss.solar_lon|number_format(4, '.', ' ') : 'N/A' }}</li>
+                            </ul>
+                        </section>
+
+                        <section class="info-block info-block-full">
+                            <h2>Horodatage</h2>
+                            <ul>
+                                <li>
+                                    <strong>Timestamp :</strong>
+                                    {% if iss.timestamp %}
+                                        {{ iss.timestamp|date('d/m/Y H:i:s') }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </section>
+
+                    </div>
+                </article>
+                
+                <article class="people-card">
+                    <h2>People in Space</h2>
+
+                    <p class="people-total">
+                        <strong>Total :</strong> {{ peopleInSpace.number ?? 0 }}
+                    </p>
+
+                    {% if peopleInSpace.people is not empty %}
+                        <ul class="people-list">
+                            {% for person in peopleInSpace.people %}
+                                <li class="people-item">
+                                    <span class="people-name">{{ person.name }}</span>
+                                    <span class="people-craft">{{ person.craft }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>Aucune donnée disponible pour le moment.</p>
+                    {% endif %}
+                </article>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
