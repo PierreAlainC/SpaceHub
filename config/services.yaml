@@ -15,6 +15,9 @@ parameters:
 
     people_in_space_api_url: '%env(PEOPLE_IN_SPACE_URl)%'
 
+    nominatim_api_url: '%env(NOMINATIM_URl)%'
+    
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -57,6 +60,11 @@ services:
         arguments:
             # variables qui vont stocker notre clé via le paramètre
             $peopleInSpaceApiUrl: '%people_in_space_api_url%'
+
+    App\Service\IssLocationService:
+        arguments:
+            # variables qui vont stocker notre clé via le paramètre
+            $nominatimApiUrl: '%nominatim_api_url%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

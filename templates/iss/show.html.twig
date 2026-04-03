@@ -20,11 +20,25 @@
                     la position actuelle de la Station spatiale internationale ainsi que les 
                     astronautes étant en orbite.
                 </p>
+                <div class="iss-currently-over">
+                    Emplacement actuel de la Station Spatiale Internationale :
+                    <br> <strong>{{ locationZone }}</strong>
+                </div>
             </header>
 
             <div class="iss-layout">
                 <article class="iss-card">
                     <div class="iss-card-grid">
+                        {# <section class="info-block ">
+                            <h2>Zone de survol</h2>
+                            <ul>
+                                <li><strong>Résumé :</strong> {{ locationLabel }}</li>
+                                <li><strong>Pays :</strong> {{ location.country ?? 'N/A' }}</li>
+                                <li><strong>Région / État :</strong> {{ location.state ?? location.region ?? 'N/A' }}</li>
+                                <li><strong>Ville proche :</strong> {{ location.city ?? 'N/A' }}</li>
+                                <li><strong>Zone maritime :</strong> {{ location.body_of_water ?? 'N/A' }}</li>
+                            </ul>
+                        </section> #}
 
                         <section class="info-block">
                             <h2>Informations générales</h2>
@@ -61,7 +75,7 @@
                             </ul>
                         </section>
 
-                        <section class="info-block info-block-full">
+                        <section class="info-block">
                             <h2>Horodatage</h2>
                             <ul>
                                 <li>

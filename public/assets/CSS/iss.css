@@ -42,6 +42,16 @@
     color: #555;
 }
 
+.iss-currently-over {
+    margin-top: 18px;
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
 .iss-card {
     max-width: 1000px;
     margin: 0 auto;
@@ -79,10 +89,6 @@
     margin-bottom: 10px;
     line-height: 1.5;
     color: #333;
-}
-
-.info-block-full {
-    grid-column: 1 / -1;
 }
 
 .people-card {
