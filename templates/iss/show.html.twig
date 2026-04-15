@@ -6,6 +6,13 @@
     <section class="iss-page">
         <div class="container">
 
+            {% include 'partials/breadcrumbnavbar.html.twig' with {
+                items: [
+                    { label: 'Accueil', url: path('homepage') },
+                    { label: 'ISS Tracking', url: path('iss_show') },
+                ]
+            } %}
+
             <header class="iss-header">
                 <p class="iss-label">ISS Tracking</p>
                 <h1>Position actuelle de l’ISS et les astronautes en orbite</h1>
@@ -113,6 +120,8 @@
                     {% endif %}
                 </article>
             </div>
+
+            <a href="{{ path('homepage') }}" class="back-link">← Retour à l'Accueil</a>
 
         </div>
     </section>

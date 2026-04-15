@@ -1,0 +1,23 @@
+article {
+    margin-bottom: 2rem;
+}
+
+/* ----------------  NAVBAR BREADCRUMB  --------------- */
+.breadcrumb {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: #6b7280;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #1d4ed8;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 6px;
+}
