@@ -31,7 +31,7 @@ class ApodService
     public function fetchApod(?string $date = null): array
     {
         $query = [
-            'api_key' => $this->apiKey,
+            'api_key' => $this->apiKey,            
             /* On enleve thumbs pour faire simple car erreur 500 et tout casse
             ^ 500
             ^ "{"code":500,"msg":"Internal Service Error","service_version":"v1"}\n" */
@@ -43,7 +43,10 @@ class ApodService
         }
 
         $response = $this->client->request(
-            'GET', $this->apiUrl . '/planetary/apod', 
+            'GET', $this->apiUrl . '/planetary/apod',
+            [
+                'timeout' => 10
+            ], 
             ['query' => $query,]
         );
         /* $content = $response->getContent(false);

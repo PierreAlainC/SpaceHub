@@ -1,84 +1,203 @@
-# SpaceHub
+# 🚀 SpaceHub
 
-SpaceHub a pour objectif de partager mon intéret pour l'Espace! Il permettra de regrouper plusieurs données en utilisant des APIs publiques.  
-Le site permettra d’afficher des informations comme la photo du jour (NASA), la position de l’ISS ou des données sur les planètes et tout ça vraiment dans le but de faire découvrir simplement ce fascinant cosmos!  
-Le projet repose sur Symfony 5.4.
+Bienvenue sur **SpaceHub** 🌌
+Un projet perso autour de l’espace, développé avec Symfony, avec un objectif simple : **rendre les données spatiales accessibles et sympa à explorer**.
 
-## Objectif du projet
+---
 
-- Centraliser plusieurs APIs externes dans une seule interface.  
-- Construire une API interne simple (JSON) pour exposer les données récupérées.  
-- Mettre en place une base technique claire pour la suite du développement.  
-- Utiliser une architecture organisée : contrôleurs courts, services dédiés, logs.
-- PARTAGER!
+## 🌍 Live Demo
 
-## Installation
+👉 [Découvrir SpaceHub](https://spacehub.rf.gd)
 
-### Cloner le dépôt :
+---
+
+## 🏷️ Tech & Status
+
+![PHP](https://img.shields.io/badge/PHP-7.4-blue)
+![Symfony](https://img.shields.io/badge/Symfony-5.4-black)
+![Status](https://img.shields.io/badge/status-WIP-orange)
+![Hosting](https://img.shields.io/badge/hosting-InfinityFree-lightgrey)
+
+---
+
+## 📸 Aperçu
+
+### 🏠 Homepage
+
+![Homepage](public/assets/images/readme/homepage.png)
+
+### 🪐 Planètes (liste)
+
+![Planets](public/assets/images/readme/planets.png)
+
+### 🌍 Fiche planète
+
+![Planet](public/assets/images/readme/planet.png)
+
+### 📸 APOD (NASA)
+
+![APOD](public/assets/images/readme/apod.png)
+
+### 🛰️ ISS Tracking
+
+![ISS](public/assets/images/readme/iss.png)
+
+---
+
+## 🌠 Le concept
+
+SpaceHub regroupe plusieurs APIs publiques pour afficher :
+
+* 🪐 **Les planètes** du système solaire (données physiques & orbitales)
+* 📸 **La photo du jour (APOD)** de la NASA
+* 🛰️ **La position de l’ISS** en temps réel
+* 👨‍🚀 **Les astronautes actuellement dans l’espace**
+
+👉 Le but : proposer une interface simple pour découvrir le cosmos sans se prendre la tête.
+
+---
+
+## 🧠 Stack technique
+
+* PHP 7.4
+* Symfony 5.4
+* Doctrine ORM
+* Twig
+* MySQL / MariaDB
+* Symfony HttpClient
+
+---
+
+## 🔌 APIs utilisées
+
+* NASA (APOD)
+* WhereTheISSAt (position ISS)
+* Open Notify (astronautes)
+* OpenStreetMap / Nominatim (géolocalisation)
+* Le Système Solaire API (planètes)
+
+---
+
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/PierreAlainC/SpaceHub.git
 cd SpaceHub
-```
-
-### Installer les dépendances :
-
-```bash
 composer install
 ```
 
-### Configurer la base de donnée dans .env.local :
+### 🔑 Configuration
 
-```bash
+Créer un fichier `.env.local` :
+
+```dotenv
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/spacehub"
+
+NASA_API_KEY=your_api_key_here
 ```
 
-### Créer la base de donnée et appliquer les migrations :
+---
+
+### 🗄️ Base de données
 
 ```bash
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 ```
 
-### Lancer le serveur Symfony :
+---
+
+### ▶️ Lancer le projet
 
 ```bash
 symfony serve
 ```
 
-### Endpoints prévus
+ou bien
 
->
+```bash
+php -S 127.0.0.1:3306 -t public
+```
 
-### Les routes suivantes seront ajoutées pendant le développement :
+---
 
-```GET /api/v1/apod``` : photo du jour (NASA)
+## 🌐 Endpoints API
 
-```GET /api/v1/iss``` : position actuelle de l’ISS
+```text
+GET /api/v1/apod
+GET /api/v1/iss
+GET /api/v1/planets
+GET /api/v1/planets/{id}
+```
 
-```GET /api/v1/planets``` : liste des planètes
+---
 
-```GET /api/v1/planets/{id}``` : détails d’une planète
+## 🚀 Déploiement
 
-```POST /api/v1/favorites``` : ajout d’un favori
+Le projet est déployé sur **InfinityFree**.
 
-```GET /api/v1/favorites``` : liste des favoris
+👉 Quelques adaptations nécessaires :
 
-### État actuel
+* utilisation de `NativeHttpClient` (compatibilité serveur)
+* gestion des limitations cURL / SSL
+* fallback sur certaines APIs
 
->Installation Symfony terminée
->
->Composants principaux ajoutés
->
->Outils de développement installés
->
->Documentation technique en cours
+---
 
-Le README sera complété au fur et à mesure de l’avancée du projet.
+## ⚠️ Limitations actuelles
 
-> NB:
-> version PHP : PHP 7.4.3 (cli)
-> version SYmfony : Symfony 5.4.51
-> serveur local : 127.0.0.1
-> version MariaDB : 10.3.25
-> 
+Soyez indulgent 😄
+
+* Certaines APIs (ISS, géolocalisation) peuvent être instables
+* Temps de réponse dépendant des services externes
+* Hébergement gratuit → limitations réseau / SSL
+
+---
+
+## 🔄 Améliorations prévues (V2)
+
+* Mise en cache des appels API
+* Carte interactive (Leaflet) pour l’ISS
+* Traduction automatique (APOD)
+* Amélioration UX/UI
+* Gestion des favoris
+* Optimisation performances
+* Pages erreurs
+
+---
+
+## 📊 État du projet
+
+* ✅ Planètes : OK
+* ✅ APOD : OK ⚠️ mais réponse 500 fréquente liée aux serveurs API ⚠️
+* ✅ ISS : fonctionnel ⚠️ mais réponses API pouvant être longues ⚠️
+* 🔄 Projet en évolution
+
+---
+
+## 🙋‍♂️ Feedback
+
+N’hésitez pas à :
+
+* proposer des idées
+* suggérer des améliorations
+* partager vos retours 🙌
+
+Je suis clairement en phase d’apprentissage et d’amélioration continue.
+
+---
+
+## 👨‍💻 Auteur
+
+**Pierre-Alain Cypres**
+Développeur Web (Symfony / Backend)
+
+---
+
+## 🌌 Conclusion
+
+SpaceHub est un projet passion, en constante évolution 🚀
+
+👉 Une V2 est clairement prévue !
+
+Merci d’avoir pris le temps de jeter un œil 🙏

@@ -25,7 +25,10 @@ class IssService
         // -> https://wheretheiss.at/w/developer
         $response = $this->client->request(
             'GET',
-            $this->apiUrl . '/satellites/25544'
+            $this->apiUrl . '/satellites/25544',
+            [
+                'timeout' => 20
+            ],
         );
 
         $data = $response->toArray();

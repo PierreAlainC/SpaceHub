@@ -83,3 +83,9 @@
 .translate-button:hover {
     background: #059669;
 }
+
+@media (max-width: 900px) {
+    .apod-layout {
+        grid-template-columns: 1fr;
+    }
+}

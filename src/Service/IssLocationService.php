@@ -94,6 +94,6 @@ class IssLocationService
             return 'Zone proche : ' . $location['display_name'];
         }
 
-        return 'Zone de survol indisponible pour le moment, nous guettons le retour de L\'ISS';
+        return 'Zone de survol indisponible pour le moment, L\'ISS est très certainement au-dessus de l\'eau et nous guettons son retour au dessus de la terre ferme!';
     }
 }

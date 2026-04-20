@@ -28,62 +28,68 @@
                     <p class="apod-date">{{ apod.date|date('d/m/Y') }}</p>
                 {% endif %}
             </header>
+            <div class="apod-layout">
+                <article class="apod-card">
 
-            <article class="apod-card">
-
-                {# IMAGE #}
-                {% if apod.media_type == 'image' %}
-                    <div class="apod-media">
-                        <img
-                            src="{{ apod.url }}"
-                            alt="{{ apod.title }}"
-                            loading="lazy"
-                        >
-                    </div>
-
-                {# VIDEO #}
-                {% elseif apod.media_type == 'video' %}
-                    <div class="apod-media">
-
-                        {% if apod.thumbnail_url %}
+                    {# IMAGE #}
+                    {% if apod.media_type == 'image' %}
+                        <div class="apod-media">
                             <img
-                                src="{{ apod.thumbnail_url }}"
+                                src="{{ apod.url }}"
                                 alt="{{ apod.title }}"
                                 loading="lazy"
                             >
-                        {% endif %}
+                        </div>
 
-                        <a href="{{ apod.url }}" target="_blank" class="apod-video-button">
-                            ▶ Voir la vidéo
-                        </a>
-                    </div>
-                {% endif %}
+                    {# VIDEO #}
+                    {% elseif apod.media_type == 'video' %}
+                        <div class="apod-media">
 
-                <div class="apod-content">
+                            {% if apod.thumbnail_url %}
+                                <img
+                                    src="{{ apod.thumbnail_url }}"
+                                    alt="{{ apod.title }}"
+                                    loading="lazy"
+                                >
+                            {% endif %}
 
-                    {% if apod.copyright %}
-                        <p class="apod-credit">
-                            Crédit : {{ apod.copyright }}
-                        </p>
+                            <a href="{{ apod.url }}" target="_blank" class="apod-video-button">
+                                ▶ Voir la vidéo
+                            </a>
+                        </div>
                     {% endif %}
 
-                    <div class="apod-description">
+                    <div class="apod-content">
 
-                        {% if translatedExplanation %}
-                            <p>{{ translatedExplanation }}</p>
-                        {% else %}
-                            <p>{{ apod.explanation }}</p>
+                        {% if apod.copyright %}
+                            <p class="apod-credit">
+                                Crédit : {{ apod.copyright }}
+                            </p>
+                            
                         {% endif %}
+                        {# Descritpion sans la traduction #}
+                        <div class="apod-description">
+                                <p>{{ apod.explanation }}</p>
+                        </div>
+                        {# La traduction est mise en attente pour le moment le temps que ça marche pardi!
+                        <div class="apod-description">
 
+                            {% if translatedExplanation %}
+                                <p>{{ translatedExplanation }}</p>
+                            {% else %}
+                                <p>{{ apod.explanation }}</p>
+                            {% endif %}
+
+                        </div>
+
+                        <a href="{{ path('apod_show', { translate: 1 }) }}" class="translate-button">
+                            🌐 Traduire en français
+                        </a>
+                        #}
                     </div>
 
-                    <a href="{{ path('apod_show', { translate: 1 }) }}" class="translate-button">
-                        🌐 Traduire en français
-                    </a>
-
-                </div>
-
-            </article>
+                </article>
+            </div>
         {% endif %}
         
         <a href="{{ path('homepage') }}" class="back-link">← Retour à l'Accueil</a>
