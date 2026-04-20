@@ -11,11 +11,11 @@ parameters:
     nasa_api_key: '%env(NASA_API_KEY)%'
     nasa_api_url: '%env(NASA_API_URL)%'
 
-    iss_api_url: '%env(ISS_API_URl)%'
+    iss_api_url: '%env(ISS_API_URL)%'
 
-    people_in_space_api_url: '%env(PEOPLE_IN_SPACE_URl)%'
+    people_in_space_api_url: '%env(PEOPLE_IN_SPACE_URL)%'
 
-    nominatim_api_url: '%env(NOMINATIM_URl)%'
+    nominatim_api_url: '%env(NOMINATIM_URL)%'
     
 
 services:

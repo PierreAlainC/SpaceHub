@@ -31,8 +31,11 @@ class ApodService
     public function fetchApod(?string $date = null): array
     {
         $query = [
-            'api_key' => $this->apiKey,
-            'thumbs' => 'true',
+            'api_key' => $this->apiKey,            
+            /* On enleve thumbs pour faire simple car erreur 500 et tout casse
+            ^ 500
+            ^ "{"code":500,"msg":"Internal Service Error","service_version":"v1"}\n" */
+            /* 'thumbs' => 'true', */
         ];
 
         if ($date !== null){
@@ -40,12 +43,31 @@ class ApodService
         }
 
         $response = $this->client->request(
-            'GET', $this->apiUrl . '/planetary/apod', ['query' => $query,]
+            'GET', $this->apiUrl . '/planetary/apod',
+            [
+                'timeout' => 10
+            ], 
+            ['query' => $query,]
         );
-
-        $data = $response->toArray();
+        /* $content = $response->getContent(false);
+        dump($response->getStatusCode(), $content);
+        die; */
+        /* dd($response); */
+        $statusCode = $response->getStatusCode();
+        $content = $response->getContent(false);
+        $data = json_decode($content, true);
+        
+        if ($statusCode >= 400) {
+            return [
+                'error' => true,
+                'status_code' => $statusCode,
+                'message' => $data['msg'] ?? 'APOD indisponible pour le moment',
+                'service_version' => $data['service_version'] ?? null,
+            ];
+        }
         
         return [
+            'error' => false,
             'title' => $data['title'] ?? null,
             'date' => $data['date'] ?? null,
             'explanation' => $data['explanation'] ?? null,

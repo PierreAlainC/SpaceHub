@@ -11,6 +11,10 @@
     font-size: 2rem;
     margin-bottom: 10px;
     text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #1d4ed8;
+    font-weight: 600;
 }
 
 .page-intro {

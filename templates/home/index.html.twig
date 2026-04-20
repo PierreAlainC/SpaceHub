@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SpaceHub{% endblock %}
+
+{% block body %}
+<div id="homepage">
+    <section class="homepage">
+        <div class="container">
+            <p class="homepage-label">SpaceHub</p>
+            <h1>Explore the universe with SpaceHub</h1>
+            <p class="homepage-intro">
+                SpaceHub centralise plusieurs modules autour de l’exploration spatiale :
+                fiches planètes, photo du jour de la NASA, suivi de l’ISS et bientôt d’autres fonctionnalités.
+            </p>
+        </div>
+    </section>
+
+    <section class="homepage-modules">
+        <div class="container">
+            <div class="modules-grid">
+
+                <article class="module-card">
+                    <div class="module-card-image">
+                        <img
+                            src="{{ asset('assets/images/homepage/PLANETS.jpg') }}"
+                            alt="Illustration du module planètes"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="module-card-content">
+                        <h2>Planètes</h2>
+                        <p>
+                            Découvrez les principales données physiques et orbitales
+                            des planètes du système solaire.
+                        </p>
+                        <a href="{{ path('planets_list') }}" class="module-button">Voir les planètes</a>
+                    </div>
+                </article>
+
+                <article class="module-card">
+                    <div class="module-card-image">
+                        <img
+                            src="{{ asset('assets/images/homepage/APOD.jpg') }}"
+                            alt="Illustration du module APOD"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="module-card-content">
+                        <h2>Photo du jour</h2>
+                        <p>
+                            Consultez l’Astronomy Picture of the Day de la NASA
+                            avec son titre, sa date et sa description.
+                        </p>
+                        <a href="{{ path('apod_show') }}" class="module-button">Voir l’APOD</a>
+                    </div>
+                </article>
+
+                <article class="module-card">
+                    <div class="module-card-image">
+                        <img
+                            src="{{ asset('assets/images/homepage/ISS.jpg') }}"
+                            alt="Illustration du module ISS Tracking"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="module-card-content">
+                        <h2>ISS Tracking</h2>
+                        <p>
+                            Suivez la position actuelle de l’ISS, ses données orbitales
+                            et les personnes actuellement dans l’espace.
+                        </p>
+                        <a href="{{ path('iss_show') }}" class="module-button">Suivre l’ISS</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

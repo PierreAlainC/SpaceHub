@@ -6,7 +6,14 @@
 {% block body %}
     <section class="planet-detail-page">
         <div class="container">
-            <a href="{{ path('planets_list') }}" class="back-link">← Retour à la liste</a>
+
+            {% include 'partials/breadcrumbnavbar.html.twig' with {
+                items: [
+                    { label: 'Accueil', url: path('homepage') },
+                    { label: 'Planètes', url: path('planets_list') },
+                    { label: planet.name }
+                ]
+            } %}
 
             <article class="planet-detail-card">
                 <div class="planet-detail-header">
@@ -68,6 +75,8 @@
                     </section>
                 </div>
             </article>
+
+            <a href="{{ path('planets_list') }}" class="back-link">← Retour à la liste des planètes</a>
         </div>
     </section>
 {% endblock %}

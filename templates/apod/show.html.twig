@@ -6,61 +6,93 @@
 <section class="apod-page">
     <div class="container">
 
-        <header class="apod-header">
-            <p class="apod-label">NASA - Astronomy Picture of the Day</p>
-            <h1>{{ apod.title }}</h1>
+        {% include 'partials/breadcrumbnavbar.html.twig' with {
+            items: [
+                { label: 'Accueil', url: path('homepage') },
+                { label: 'APOD', url: path('apod_show') },
+            ]
+        } %}
 
-            {% if apod.date %}
-                <p class="apod-date">{{ apod.date|date('d/m/Y') }}</p>
-            {% endif %}
-        </header>
+        {% if apod.error %}
+            <div class="error-message">
+                <p>
+                    Toutes nos excuse, la photo du jour est indisponible pour le moment.
+                </p>
+            </div>
+        {% else %}
+            <header class="apod-header">
+                <p class="apod-label">NASA - Astronomy Picture of the Day</p>
+                <h1>{{ apod.title }}</h1>
 
-        <article class="apod-card">
+                {% if apod.date %}
+                    <p class="apod-date">{{ apod.date|date('d/m/Y') }}</p>
+                {% endif %}
+            </header>
+            <div class="apod-layout">
+                <article class="apod-card">
 
-            {# IMAGE #}
-            {% if apod.media_type == 'image' %}
-                <div class="apod-media">
-                    <img
-                        src="{{ apod.url }}"
-                        alt="{{ apod.title }}"
-                        loading="lazy"
-                    >
-                </div>
+                    {# IMAGE #}
+                    {% if apod.media_type == 'image' %}
+                        <div class="apod-media">
+                            <img
+                                src="{{ apod.url }}"
+                                alt="{{ apod.title }}"
+                                loading="lazy"
+                            >
+                        </div>
 
-            {# VIDEO #}
-            {% elseif apod.media_type == 'video' %}
-                <div class="apod-media">
+                    {# VIDEO #}
+                    {% elseif apod.media_type == 'video' %}
+                        <div class="apod-media">
 
-                    {% if apod.thumbnail_url %}
-                        <img
-                            src="{{ apod.thumbnail_url }}"
-                            alt="{{ apod.title }}"
-                            loading="lazy"
-                        >
+                            {% if apod.thumbnail_url %}
+                                <img
+                                    src="{{ apod.thumbnail_url }}"
+                                    alt="{{ apod.title }}"
+                                    loading="lazy"
+                                >
+                            {% endif %}
+
+                            <a href="{{ apod.url }}" target="_blank" class="apod-video-button">
+                                ▶ Voir la vidéo
+                            </a>
+                        </div>
                     {% endif %}
 
-                    <a href="{{ apod.url }}" target="_blank" class="apod-video-button">
-                        ▶ Voir la vidéo
-                    </a>
-                </div>
-            {% endif %}
+                    <div class="apod-content">
 
-            <div class="apod-content">
+                        {% if apod.copyright %}
+                            <p class="apod-credit">
+                                Crédit : {{ apod.copyright }}
+                            </p>
+                            
+                        {% endif %}
+                        {# Descritpion sans la traduction #}
+                        <div class="apod-description">
+                                <p>{{ apod.explanation }}</p>
+                        </div>
+                        {# La traduction est mise en attente pour le moment le temps que ça marche pardi!
+                        <div class="apod-description">
 
-                {% if apod.copyright %}
-                    <p class="apod-credit">
-                        Crédit : {{ apod.copyright }}
-                    </p>
-                {% endif %}
+                            {% if translatedExplanation %}
+                                <p>{{ translatedExplanation }}</p>
+                            {% else %}
+                                <p>{{ apod.explanation }}</p>
+                            {% endif %}
 
-                <p class="apod-description">
-                    {{ apod.explanation }}
-                </p>
+                        </div>
 
+                        <a href="{{ path('apod_show', { translate: 1 }) }}" class="translate-button">
+                            🌐 Traduire en français
+                        </a>
+                        #}
+                    </div>
+
+                </article>
             </div>
-
-        </article>
-
+        {% endif %}
+        
+        <a href="{{ path('homepage') }}" class="back-link">← Retour à l'Accueil</a>
     </div>
 </section>
 {% endblock %}
