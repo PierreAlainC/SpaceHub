@@ -1,17 +1,17 @@
-# 🚀 SpaceHub
+# SpaceHub
 
 Bienvenue sur **SpaceHub** 🌌
 Un projet perso autour de l’espace, développé avec Symfony, avec un objectif simple : **rendre les données spatiales accessibles et sympa à explorer**.
 
 ---
 
-## 🌍 Live Demo
+## Live Demo
 
-👉 [Découvrir SpaceHub](https://spacehub.rf.gd)
+[Découvrir SpaceHub](https://spacehub.rf.gd)
 
 ---
 
-## 🏷️ Tech & Status
+## Tech & Status
 
 ![PHP](https://img.shields.io/badge/PHP-7.4-blue)
 ![Symfony](https://img.shields.io/badge/Symfony-5.4-black)
@@ -20,44 +20,44 @@ Un projet perso autour de l’espace, développé avec Symfony, avec un objectif
 
 ---
 
-## 📸 Aperçu
+## Aperçu
 
-### 🏠 Homepage
+### Homepage
 
 ![Homepage](public/assets/images/readme/homepage.png)
 
-### 🪐 Planètes (liste)
+### Planètes (liste)
 
 ![Planets](public/assets/images/readme/planets.png)
 
-### 🌍 Fiche planète
+### Fiche planète
 
 ![Planet](public/assets/images/readme/planet.png)
 
-### 📸 APOD (NASA)
+### APOD (NASA)
 
 ![APOD](public/assets/images/readme/apod.png)
 
-### 🛰️ ISS Tracking
+### ISS Tracking
 
 ![ISS](public/assets/images/readme/iss.png)
 
 ---
 
-## 🌠 Le concept
+## Le concept
 
 SpaceHub regroupe plusieurs APIs publiques pour afficher :
 
-* 🪐 **Les planètes** du système solaire (données physiques & orbitales)
-* 📸 **La photo du jour (APOD)** de la NASA
-* 🛰️ **La position de l’ISS** en temps réel
-* 👨‍🚀 **Les astronautes actuellement dans l’espace**
+* **Les planètes** du système solaire (données physiques & orbitales)
+* **La photo du jour (APOD)** de la NASA
+* **La position de l’ISS** en temps réel
+* **Les astronautes actuellement dans l’espace**
 
-👉 Le but : proposer une interface simple pour découvrir le cosmos sans se prendre la tête.
+ Le but : proposer une interface simple pour découvrir le cosmos sans se prendre la tête.
 
 ---
 
-## 🧠 Stack technique
+## Stack technique
 
 * PHP 7.4
 * Symfony 5.4
@@ -68,7 +68,7 @@ SpaceHub regroupe plusieurs APIs publiques pour afficher :
 
 ---
 
-## 🔌 APIs utilisées
+## APIs utilisées
 
 * NASA (APOD)
 * WhereTheISSAt (position ISS)
@@ -78,7 +78,7 @@ SpaceHub regroupe plusieurs APIs publiques pour afficher :
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 git clone https://github.com/PierreAlainC/SpaceHub.git
@@ -86,7 +86,7 @@ cd SpaceHub
 composer install
 ```
 
-### 🔑 Configuration
+### Configuration
 
 Créer un fichier `.env.local` :
 
@@ -98,7 +98,7 @@ NASA_API_KEY=your_api_key_here
 
 ---
 
-### 🗄️ Base de données
+### Base de données
 
 ```bash
 php bin/console doctrine:database:create
@@ -107,7 +107,7 @@ php bin/console doctrine:migrations:migrate
 
 ---
 
-### ▶️ Lancer le projet
+### Lancer le projet
 
 ```bash
 symfony serve
@@ -116,12 +116,12 @@ symfony serve
 ou bien
 
 ```bash
-php -S 127.0.0.1:3306 -t public
+php -S 127.0.0.1:8000 -t public
 ```
 
 ---
 
-## 🌐 Endpoints API
+## Endpoints API
 
 ```text
 GET /api/v1/apod
@@ -132,11 +132,11 @@ GET /api/v1/planets/{id}
 
 ---
 
-## 🚀 Déploiement
+## Déploiement
 
 Le projet est déployé sur **InfinityFree**.
 
-👉 Quelques adaptations nécessaires :
+Quelques adaptations nécessaires :
 
 * utilisation de `NativeHttpClient` (compatibilité serveur)
 * gestion des limitations cURL / SSL
@@ -144,9 +144,9 @@ Le projet est déployé sur **InfinityFree**.
 
 ---
 
-## ⚠️ Limitations actuelles
+## Limitations actuelles
 
-Soyez indulgent 😄
+Soyez indulgent!
 
 * Certaines APIs (ISS, géolocalisation) peuvent être instables
 * Temps de réponse dépendant des services externes
@@ -154,7 +154,7 @@ Soyez indulgent 😄
 
 ---
 
-## 🔄 Améliorations prévues (V2)
+## Améliorations prévues (V2)
 
 * Mise en cache des appels API
 * Carte interactive (Leaflet) pour l’ISS
@@ -175,29 +175,29 @@ Soyez indulgent 😄
 
 ---
 
-## 🙋‍♂️ Feedback
+## Feedback
 
 N’hésitez pas à :
 
 * proposer des idées
 * suggérer des améliorations
-* partager vos retours 🙌
+* partager vos retours
 
 Je suis clairement en phase d’apprentissage et d’amélioration continue.
 
 ---
 
-## 👨‍💻 Auteur
+## Auteur
 
 **Pierre-Alain Cypres**
 Développeur Web (Symfony / Backend)
 
 ---
 
-## 🌌 Conclusion
+## Conclusion
 
-SpaceHub est un projet passion, en constante évolution 🚀
+SpaceHub est un projet passion, en constante évolution
 
-👉 Une V2 est clairement prévue !
+ Une V2 est clairement prévue !
 
-Merci d’avoir pris le temps de jeter un œil 🙏
+Merci d’avoir pris le temps de jeter un œil 
