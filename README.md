@@ -187,13 +187,6 @@ Je suis clairement en phase d’apprentissage et d’amélioration continue.
 
 ---
 
-## Auteur
-
-**Pierre-Alain Cypres**
-Développeur Web (Symfony / Backend)
-
----
-
 ## Conclusion
 
 SpaceHub est un projet passion, en constante évolution
@@ -201,3 +194,10 @@ SpaceHub est un projet passion, en constante évolution
  Une V2 est clairement prévue !
 
 Merci d’avoir pris le temps de jeter un œil 
+
+---
+
+## Auteur
+
+**Pierre-Alain Cypres**
+Développeur Web (Symfony / Backend)
